@@ -1,0 +1,248 @@
+   
+    :root {
+     
+    --bg-color: #528864;   
+    /*--bg-color: #f9f7f2;*/
+    --text-color: #2c2c2c;
+    --accent: #8e9775; /* Un verde oliva suave */
+    --font-main: 'Playfair Display', serif;
+    --font-secondary: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+}
+
+/* Navegación Estética */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: ghostwhite;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: ghostwhite;
+}
+
+/* Hero Section Asimétrico */
+.hero {
+    display: flex;
+    align-items: center;
+    padding: 5% 10%;
+    min-height: 80vh;
+    gap: 5%;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-content em {
+    font-style: italic;
+    font-weight: 200;
+}
+
+.hero-image {
+    flex: 1;
+    height: 600px;
+    overflow: hidden;
+    border-radius: 300px 300px 0 0; /* Forma de arco */
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botones */
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--accent);
+    color: white;
+    text-decoration: none;
+    margin-top: 2rem;
+    transition: opacity 0.3s;
+}
+
+/* Grid Editorial */
+.featured {
+    padding: 100px 5%;
+}
+
+.grid-flowers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 4rem;
+    align-items: end;
+}
+
+.card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.02);
+}
+
+.card.tall img {
+    height: 550px;
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+}
+
+/* Sección de Suscripción */
+.subscription {
+    padding: 150px 10%;
+    background-color: #f0eee9; /* Un tono ligeramente más oscuro que el fondo para dar profundidad */
+}
+
+.sub-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.sub-image {
+    flex: 1.2;
+    position: relative;
+    z-index: 1;
+}
+
+.sub-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    filter: sepia(20%); /* Toque vintage */
+}
+
+.sub-badge {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    background: var(--accent);
+    color: white;
+    padding: 2rem;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.sub-text {
+    flex: 1;
+    background: white;
+    padding: 4rem;
+    margin-left: -100px; /* Aquí ocurre la magia del solapamiento */
+    position: relative;
+    z-index: 2;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.03);
+}
+
+.sub-text h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-main);
+}
+
+.sub-features {
+    list-style: none;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.sub-features li {
+    margin-bottom: 0.5rem;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-outline:hover {
+    background-color: var(--text-color);
+    color: white;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 900px) {
+    .sub-container {
+        flex-direction: column;
+    }
+    .sub-text {
+        margin-left: 0;
+        margin-top: -50px;
+        padding: 2rem;
+        width: 90%;
+    }
+    .sub-image img {
+        height: 350px;
+    }
+}

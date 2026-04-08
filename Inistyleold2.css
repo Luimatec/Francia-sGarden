@@ -1,0 +1,114 @@
+:root {
+    --bg-color: #528864; /* Tu nuevo verde bosque */
+    --text-color: #fdfaf6; /* Crema suave para lectura cómoda */
+    --accent: #d4af37;    /* Dorado sutil para detalles */
+    --card-bg: rgba(255, 255, 255, 0.05); /* Fondo translúcido para tarjetas */
+    --font-main: 'Playfair Display', serif;
+    --font-secondary: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-secondary);
+    line-height: 1.6;
+}
+
+/* --- Ajustes Específicos para el Fondo Oscuro --- */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a {
+    color: var(--text-color);
+}
+
+.btn-primary {
+    background-color: var(--text-color);
+    color: var(--bg-color); /* El texto del botón toma el verde del fondo */
+    font-weight: bold;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+/* Tarjetas de productos */
+.card {
+    background: var(--card-bg);
+    padding: 15px;
+    backdrop-filter: blur(5px); /* Efecto de vidrio esmerilado */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card span {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Sección Suscripción Solapada */
+.subscription {
+    background-color: rgba(0, 0, 0, 0.2); /* Oscurecemos un poco más para contraste */
+}
+
+.sub-text {
+    background: #447253; /* Un verde ligeramente más oscuro para el cuadro de texto */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sub-badge {
+    background: var(--accent);
+    color: #000;
+}
+
+/* Testimonios */
+.testi-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 2px solid var(--accent);
+    color: white;
+}
+
+.quote-text {
+    color: #e0e0e0;
+}
+
+.testi-author strong {
+    color: var(--accent);
+}
+
+/* Footer */
+.footer {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links a, .footer-brand p {
+    color: #ccc;
+}
+
+.subscribe-form {
+    border-bottom: 1px solid var(--accent);
+}
+
+.subscribe-form input {
+    color: white;
+}
+
+.subscribe-form button {
+    color: var(--accent);
+}
