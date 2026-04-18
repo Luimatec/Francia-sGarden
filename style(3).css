@@ -469,119 +469,83 @@ body {
     }
 }
 
-.catalog {
-    padding: 100px 5%;
-    max-width: 1800px;
-    margin: 0 auto;
-    background-color: #f0eee9;
+
+.flower-gallery {
+    background-color: #FDF9F3; /* Tu verde característico */
+    padding: 80px 5%;
+    color: #fdfaf6;
 }
 
-.catalog-header {
+.gallery-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
-.catalog-header h2 {
-    font-size: 3.5rem;
-    font-family: var(--font-main);
-    color: var(--text-color);
+.gallery-header h2 em {
+    color: #B59E60; /* Tu dorado */
+    font-family: 'Playfair Display', serif;
 }
 
-.catalog-header h2 em {
-    color: var(--accent); /* Dorado #B59E60 */
-    font-style: italic;
-}
-
-/* Grid Masonry-ish */
-.catalog-grid {
+.gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* Ajusta el 200px si quieres las fotos aún más pequeñas o grandes */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
-    grid-auto-rows: 10px; /* Para controlar alturas desiguales */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.catalog-item {
-    grid-row-end: span 40; /* Altura estándar */
-    display: flex;
-    flex-direction: column;
+.flower-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(181, 158, 96, 0.2);
+    padding: 15px;
+    transition: transform 0.3s ease;
+    text-align: center;
 }
 
-.catalog-item.tall {
-    grid-row-end: span 55; /* Hace que algunas fotos sean más largas */
+.flower-card:hover {
+    transform: translateY(-10px);
+    border-color: #B59E60;
 }
 
-/* Contenedor de imagen */
-.product-img {
-    position: relative;
+.flower-img {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Cuadrado perfecto */
     overflow: hidden;
-    flex-grow: 1;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 15px;
 }
 
-.product-img img {
+.flower-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
+    object-fit: cover; /* Ajuste perfecto sin deformar */
 }
 
-/* Efecto de oscurecimiento al pasar el mouse */
-.product-overlay {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(82, 136, 100, 0.7); /* Verde con transparencia */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.catalog-item:hover .product-overlay {
-    opacity: 1;
-}
-
-.catalog-item:hover img {
-    transform: scale(1.1);
-}
-
-.view-btn {
-    padding: 10px 20px;
-    border: 1px solid white;
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-}
-
-/* Texto debajo de la foto */
-.product-info {
-    padding: 15px 0;
-}
-
-.product-info h3 {
-    font-size: 1.1rem;
+.flower-details h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
     font-weight: 300;
-    color: var(--text-color);
-    margin-bottom: 5px;
 }
 
-.product-info .price {
-    color: var(--accent);
-    font-weight: bold;
-    font-size: 0.9rem;
+.btn-select {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid #B59E60;
+    color: #684313;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
-    .catalog-grid {
-        grid-auto-rows: auto;
-    }
-    .catalog-item, .catalog-item.tall {
-        grid-row-end: auto;
-    }
+.btn-select:hover {
+    background-color: #B59E60;
+    color: #528864; /* Invierte colores al pasar el mouse */
 }
+
+
 
 /* Footer Minimalista */
 .footer {
@@ -731,7 +695,91 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
-
 /* Retrasos opcionales para elementos en cascada */
 .delay-1 { transition-delay: 0.2s; }
 .delay-2 { transition-delay: 0.4s; }
+
+
+
+:root {
+    --verde-fondo: #528864;
+    --dorado: #B59E60;
+}
+
+.catalog-section {
+    padding: 80px 5%;
+    background-color: var(--dorado);
+}
+
+.grid-flowers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+/* --- TAMAÑO UNIFORME --- */
+.img-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Cuadrado perfecto. Usa 3/4 para vertical */
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- EFECTO REVEAL (REVELADO) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- ESTILO DE TARJETA --- */
+.card-info h3 {
+    color: #fdfaf6;
+    font-family: 'Playfair Display', serif;
+    margin-top: 15px;
+    font-size: 1.2rem;
+}
+
+.card-info p {
+    color: var(--dorado);
+    font-size: 0.9rem;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover .overlay { opacity: 1; }
+.card:hover img { transform: scale(1.1); }
+
+.btn-whatsapp {
+    background: white;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}

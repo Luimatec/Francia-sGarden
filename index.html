@@ -108,70 +108,6 @@
     </div>
 </section>
 
-
-<section class="catalog reveal">
-    <div class="catalog-header">
-        <span class="subtitle" style="color: var(--accent);">Nuestras Creaciones</span>
-        <h2>Catálogo <em>Exclusivo</em></h2>
-        <p>Cada arreglo es una pieza única diseñada con flores frescas de la temporada.</p>
-    </div>
-
-    <div class="catalog-grid">
-        <div class="catalog-item tall">
-            <div class="product-img">
-                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=600&q=80" alt="Arreglo 1">
-                <div class="product-overlay">
-                    <a href="#" class="view-btn">Ver Detalles</a>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Ramo Silvestre</h3>
-                <span class="price">$45.00</span>
-            </div>
-        </div>
-
-        <div class="catalog-item">
-            <div class="product-img">
-                <img src="https://images.unsplash.com/photo-1561181286-d3fea73e413f?auto=format&fit=crop&w=600&q=80" alt="Arreglo 2">
-                <div class="product-overlay">
-                    <a href="#" class="view-btn">Ver Detalles</a>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Orquídea Blanca</h3>
-                <span class="price">$38.00</span>
-            </div>
-        </div>
-
-        <div class="catalog-item">
-            <div class="product-img">
-                <img src="https://images.unsplash.com/photo-1582794543139-8ac9cb0f7b11?auto=format&fit=crop&w=600&q=80" alt="Arreglo 3">
-                <div class="product-overlay">
-                    <a href="#" class="view-btn">Ver Detalles</a>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Eternidad Rosa</h3>
-                <span class="price">$55.00</span>
-            </div>
-        </div>
-
-        <div class="catalog-item tall">
-            <div class="product-img">
-                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=80" alt="Arreglo 4">
-                <div class="product-overlay">
-                    <a href="#" class="view-btn">Ver Detalles</a>
-                </div>
-            </div>
-            <div class="product-info">
-                <h3>Tulipanes del Sol</h3>
-                <span class="price">$42.00</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-
 <section class="testimonials">
     <div class="testi-header">
         <!-- <span class="subtitle">Experiencias</span> -->
@@ -239,6 +175,45 @@
     </div>
 </section>
 
+<section class="flower-gallery reveal">
+    <div class="gallery-container">
+        <div class="gallery-header">
+            <span class="subtitle">Catálogo Digital</span>
+            <h2>Selecciona tu <em>Favorita</em></h2>
+            <p>Haz clic en el botón para consultar el precio y disponibilidad por WhatsApp.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="flower-card">
+                <div class="flower-img">
+                    <img src="URL_IMAGEN_1.jpg" alt="Ramo de Rosas">
+                </div>
+                <div class="flower-details">
+                    <h3>Rosas de Exportación</h3>
+                    <a href="https://wa.me/18094232663?text=Hola!%20Me%20gustaría%20saber%20el%20precio%20de:%20*Rosas%20de%20Exportación*" 
+                       target="_blank" class="btn-select">
+                       Consultar Precio
+                    </a>
+                </div>
+            </div>
+
+            <div class="flower-card">
+                <div class="flower-img">
+                    <img src="URL_IMAGEN_2.jpg" alt="Girasoles">
+                </div>
+                <div class="flower-details">
+                    <h3>Girasoles Vibrantes</h3>
+                    <a href="https://wa.me/18094232663?text=Hola!%20Me%20gustaría%20saber%20el%20precio%20de:%20*Girasoles%20Vibrantes*" 
+                       target="_blank" class="btn-select">
+                       Consultar Precio
+                    </a>
+                </div>
+            </div>
+
+            </div>
+    </div>
+</section>
+
 <footer class="footer">
     <div class="footer-top">
         <div class="footer-brand">
@@ -298,6 +273,49 @@
     // Ejecutar una vez al cargar por si hay elementos visibles desde el inicio
     reveal();
 </script>
+
+
+
+<script>
+    // 1. Animación de Revelado (Reveal)
+    // Hace que las flores aparezcan suavemente al bajar el scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 2. Lógica de WhatsApp para la Galería Minimalista
+    // Detecta qué flor seleccionó el cliente y prepara el mensaje
+document.querySelectorAll('.btn-whatsapp-minimal').forEach(boton => {
+    boton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Limpiamos el número por si acaso (solo números)
+        const telefono = "18296374619".replace(/\D/g, ''); 
+        
+        const tarjeta = this.closest('.flower-card');
+        
+        if (tarjeta) {
+            const nombreFlor = tarjeta.querySelector('h3').innerText;
+            const mensaje = encodeURIComponent(`Hola Francia's Garden! Me gustaría saber el precio de: *${nombreFlor}*. ¿Está disponible?`);
+            
+            // Usamos la API de envío directo
+            const url = `https://api.whatsapp.com/send?phone=${telefono}&text=${mensaje}`;
+            window.open(url, '_blank');
+        } else {
+            console.error("No se encontró la tarjeta .flower-card");
+        }
+    });
+});
+</script>
+
+
+
 
 </body>
 </html>
